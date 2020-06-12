@@ -11,86 +11,43 @@ verge_news = newspaper.build('https://www.theverge.com/', memoize_articles = Fal
 polyg_news = newspaper.build('https://www.polygon.com/', memoize_articles = False)
 games_news = newspaper.build('https://www.gamespot.com/', memoize_articles = False)
 
-
 summary = open('news_summary.txt', 'w')
 
 nltk.download('punkt')
 
-keyword = input("Please enter any keyword (press enter to continue):")
+keyword = input("Please enter any keyword (press enter to continue): ")
 print("You entered the keyword: ", keyword)
 
-
+def printSummary(news):
 #The Verge
-for article in verge_news.articles:
-	title = article.title
-	author = article.authors
-	summary = article.summary
-	article.download()
-	article.parse()
-	article.nlp()
-	article.keywords
-	article.html
+	print(len(news.articles))
+	count = 0
+	for article in news.articles:
+		title = article.title
+		author = article.authors
+		summary = article.summary
+		article.download()
+		article.parse()
+		article.nlp()
+		article.keywords
+		article.html
+		article.text
 
-	if keyword in article.keywords:
-		print(article.title, ' - ', article.authors)
-		print(article.summary)
-		print('\n')
+		if keyword in article.keywords:
+			summary = (article.title)
+			summary += (' - ')
+			summary += (str(article.authors))
+			summary += ('\n')
+			summary += (article.summary)
+			summary += ('\n')
+		if summary != '':
+			print(summary)
+		if count > 5:
+			break
+		count += 1
 
-		summary.write(aritcle.title)
-		summary.write(' - ')
-		summary.write(article.authors)
-		summary.write('\n')
-		summary.write(article.summary)
-		summary.write('\n')
-		summary.write('\n')
-
-#Polygon
-for article in polyg_news.articles:
-	title = article.title
-	author = article.authors
-	summary = article.summary
-	article.download()
-	article.parse()
-	article.nlp()
-	article.keywords
-	article.html
-
-	if keyword in article.keywords:
-		print(article.title, ' - ', article.authors)
-		print(article.summary)
-		print('\n')
-
-		summary.write(aritcle.title)
-		summary.write(' - ')
-		summary.write(article.authors)
-		summary.write('\n')
-		summary.write(article.summary)
-		summary.write('\n')
-		summary.write('\n')
-
-#Games
-for article in games_news.articles:
-	title = article.title
-	author = article.authors
-	summary = article.summary
-	article.download()
-	article.parse()
-	article.nlp()
-	article.keywords
-	article.html
-
-	if keyword in article.keywords:
-		print(article.title, ' - ', article.authors)
-		print(article.summary)
-		print('\n')
-
-		summary.write(aritcle.title)
-		summary.write(' - ')
-		summary.write(article.authors)
-		summary.write('\n')
-		summary.write(article.summary)
-		summary.write('\n')
-		summary.write('\n')
-
+printSummary(verge_news)
+printSummary(polyg_news)
+printSummary(games_news)
 
 summary.close()
