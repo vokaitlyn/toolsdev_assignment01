@@ -1,3 +1,3 @@
 # toolsdev_assignment01
-ATCM 3311.0U1 - Assignment 01
-Scrape & Summarize News Articles Using Python
+Kaitlyn Vo
+ATCM 3311.0U1 - Assignment 01 | Scrape & Summarize Articles using Python and opens up search results in browser. 
